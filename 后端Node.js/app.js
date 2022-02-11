@@ -13,9 +13,10 @@ var db=mysql.createConnection({
   database: "liucalendar"
 });
 
+//添加/addEvent
 app.get("/addevent",function(req,res){
   console.log(req.query)
-  db.query(`INSERT INTO addevent (id, title, place, allDay, starts, ends, timeZone, re_peat, reminder, color, note) VALUES (NULL, '${req.query.title}', '${req.query.place}', '${req.query.allDay}', '${req.query.starts}', '${req.query.ends}', '${req.query.timeZone}', '${req.query.re_peat}', '${req.query.reminder}', '${req.query.color}', '${req.query.note}')`,function(err,data){
+  db.query(`INSERT INTO addevent (id, title, place, allDay, starts, ends, timeZone, re_peat, reminder, color, note, display) VALUES (NULL, '${req.query.title}', '${req.query.place}', '${req.query.allDay}', '${req.query.starts}', '${req.query.ends}', '${req.query.timeZone}', '${req.query.re_peat}', '${req.query.reminder}', '${req.query.color}', '${req.query.note}', '${req.query.display}')`,function(err,data){
     if(err){
       console.log(err);
     }
@@ -25,6 +26,21 @@ app.get("/addevent",function(req,res){
   });
 });
 
+//查询/Home
+app.get("/event",function(req,res){
+  db.query(`SELECT * FROM addevent`,function(err,data){
+    if(err){
+      console.log(err);
+    }
+    else{
+      res.header("Access-Control-Allow-Origin", "*");
+      res.send(data);
+    }
+  });
+});
+
+
+//跨域
 app.use(cors({
 	origin: ['http://localhost:8080'], // 这是本地的默认地址和端口，vue启动的项目就是在这里，这样保证了等会我们在浏览器能访问服务器的数据（user.json）	
 	methods: ["GET", "POST"],

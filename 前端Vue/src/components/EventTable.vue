@@ -1,18 +1,25 @@
 <template>
   <div class="event scrollbar">
+    <!-- event背景框架 -->
     <div class="event_div">
       <div v-for="time in event_time" :key="time">
         <div class="event_block event_line" >
           <p class="event_time">{{time}}</p>
         </div>
       </div>
+      <!-- 事件显示 -->
+      <EventShow></EventShow>
     </div>
+
   </div>
 </template>
 
 <script>
+import EventShow from "./EventShow.vue"
+
 export default {
   name: "EventTable",
+  components:{EventShow},
   data(){
     return {
       event_time:[
@@ -22,7 +29,7 @@ export default {
         '6 PM','7 PM','8 PM','9 PM','10 PM','11 PM'
       ],
     }
-  }
+  },
 }
 </script>
 

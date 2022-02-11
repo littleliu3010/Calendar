@@ -47,7 +47,7 @@ export default {
     fromSideBar(data){
       this.menu_show=data;
     }
-  }
+  },
 };
  
 //获取今天的日期
