@@ -60,7 +60,8 @@ function changeClass(i,starts,ends,color){
   var height=clock*45+time*75+"px",top=starts*47+23+"px";
   document.getElementById(i).style.height=height;
   document.getElementById(i).style.top=top;
-  document.getElementById(i).style.backgroundColor="#"+color;
+  document.getElementById(i).style.background="#"+color;
+  document.getElementById(i).style.border='2px solid #'+color;
 }
 </script>
 
@@ -71,19 +72,20 @@ function changeClass(i,starts,ends,color){
   width: 300px;
   right:20px;
   background: yellow;
-  border: 2px solid rgb(0, 0, 0);
   border-radius: 4px;
 }
 .p_title {
   display: inline-block;
   font-size: 15px;
   margin:0 auto;
+  color: #fff;
 }
 .p_time {
   display: inline-block;
   opacity: 0.8;
   font-size: 11px;
   margin:0 auto;
+  color: #fff;
 }
 .p_place {
   display: inline-block;
@@ -91,5 +93,6 @@ function changeClass(i,starts,ends,color){
   font-size: 13px;
   margin:0;
   float:right;
+  color: #fff;
 }
 </style>

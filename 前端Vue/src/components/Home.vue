@@ -9,7 +9,9 @@
     <img :src="require('@/assets/pull.png')" class="button_pull" alt="下拉">
     <img :src="require('@/assets/button_calendar.png')" class="button_calendar" alt="月份" @click="calendar_show = !calendar_show">
     
-    <button class="add_event" onclick="location='/#/addevent'"></button>
+    <button class="add_event" onclick="location='/#/addevent'">
+    <img class="add_img" :src="require('@/assets/add.png')" alt="add">
+    </button>
     <SideBar v-if="menu_show" @receive="fromSideBar"></SideBar>
   </div>
 </template>
@@ -59,14 +61,19 @@ var nowDay = today.getDay();        //今天星期几,0代表星期天
 </script>
 
 <style>
+.add_img {
+  margin: 0 auto;
+}
 .add_event {
   position: absolute;
   top: 705px;
   left: 285px;
   border: 30px;
-  padding: 30px;
+  height: 60px;
+  width: 60px;
   border-radius: 30px;
-  background-color:#464FE5
+  background-image: linear-gradient(224deg, #4750EC 0%, #6971FE 100%);
+  box-shadow: 0 8px 14px 0 rgba(48,78,236,0.40);
 }
 .menu_position {
   position: absolute;

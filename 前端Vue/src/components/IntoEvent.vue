@@ -16,12 +16,12 @@
       <p class="place" v-if="results.length>0&!modify">{{results[0].place}}</p>
       <input class="input_place" type="text" v-if="modify" v-model="results[0].place">
       <div class="solid"></div>
-      <p class="place" v-if="results.length>0&!modify">{{results[0].reminder}}min before</p>
+      <p class="place" v-if="results.length>0&!modify">{{results[0].reminder}} mins before</p>
       <input class="input_place" type="text" v-if="modify" v-model="results[0].reminder">
       <div class="solid"></div>
       <p class="place" v-if="results.length>0&!modify">{{results[0].re_peat}}</p>
       <input class="input_place" type="text" v-if="modify" v-model="results[0].re_peat">
-      <div class="color"></div>
+      <div id="color" class="color"></div>
       <img class="time_icon" :src="require('@/assets/time.png')" alt="time_icon">
       <img class="place_icon" :src="require('@/assets/place.png')" alt="place_icon">
       <img class="reminder_icon" :src="require('@/assets/reminder.png')" alt="reminder_icon">
@@ -65,6 +65,7 @@ export default {
     //接收数据
     this.$http.get("http://localhost:5050/intoevent?id="+this.$route.query.id).then((res)=>{
       this.results=res.data;
+      document.getElementById('color').style.background="#"+this.results[0].color;
     });
   }
 }

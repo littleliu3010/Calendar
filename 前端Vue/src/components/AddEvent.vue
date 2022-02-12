@@ -7,7 +7,9 @@
   </div>
   <div class="input_box1">
     <div class="solid_line"></div>
+    <img class="title_img" :src="require('@/assets/title.png')" alt="">
     <p class="p">标题：</p>
+    <img class="place_img" :src="require('@/assets/place.png')" alt="">
     <p class="p">地点：</p>
     <input type="text" class="input1" v-model="event.title">
     <input type="text" class="input2" v-model="event.place">
@@ -21,26 +23,33 @@
     <div class="solid_line solid_line5"></div>
     <div class="solid_line solid_line6"></div>
     <div class="solid_line solid_line7" v-if="colordot"></div>
+    <img class="allday_img" :src="require('@/assets/allday.png')" alt="">
     <p class="p">每天：</p>
+    <img class="time_img" :src="require('@/assets/time.png')" alt="">
     <p class="p">开始时间：</p>
+    <img class="time2_img" :src="require('@/assets/time2.png')" alt="">
     <p class="p">结束时间：</p>
+    <img class="zone_img" :src="require('@/assets/zone.png')" alt="">
     <p class="p">时区：</p>
+    <img class="repeat_img" :src="require('@/assets/repeat.png')" alt="">
     <p class="p">Repeat：</p>
+    <img class="reminder_img" :src="require('@/assets/reminder.png')" alt="">
     <p class="p">Reminder：</p>
+    <img class="color_img" :src="require('@/assets/color.png')" alt="">
     <p class="p">颜色：</p>
-    <div class="color_dot_show borderColor1" v-if="colordot" @click="choosecolor('#1EC1C3')"></div>
-    <div class="color_dot_show borderColor2" v-if="colordot" @click="choosecolor('#7A8BA9')"></div>
-    <div class="color_dot_show borderColor3" v-if="colordot" @click="choosecolor('#D467AE')"></div>
-    <div class="color_dot_show borderColor4" v-if="colordot" @click="choosecolor('#FF7043')"></div>
-    <div class="color_dot_show borderColor5" v-if="colordot" @click="choosecolor('#D4E157')"></div>
-    <div class="color_dot_show borderColor6" v-if="colordot" @click="choosecolor('#2979FF')"></div>
-    <div class="color_dot_show borderColor7" v-if="colordot" @click="choosecolor('#B8E986')"></div>
-    <div class="color_dot_show borderColor8" v-if="colordot" @click="choosecolor('#F8E71C')"></div>
-    <div class="color_dot_show borderColor9" v-if="colordot" @click="choosecolor('#EF534F')"></div>
-    <div class="color_dot_show borderColor10" v-if="colordot" @click="choosecolor('#4FC3F7')"></div>
-    <div class="color_dot_show borderColor11" v-if="colordot" @click="choosecolor('#7E57C2')"></div>
-    <div class="color_dot_show borderColor12" v-if="colordot" @click="choosecolor('#1EC1C3')"></div>
-    <input type="checkbox" name="allDay" class="input1" value="yes" v-model="event.allDay" onclick="if(this.c==1){this.c=0;this.checked=0}else this.c=1">
+    <div class="color_dot_show borderColor1" v-if="colordot" @click="choosecolor(0)"></div>
+    <div class="color_dot_show borderColor2" v-if="colordot" @click="choosecolor(1)"></div>
+    <div class="color_dot_show borderColor3" v-if="colordot" @click="choosecolor(2)"></div>
+    <div class="color_dot_show borderColor4" v-if="colordot" @click="choosecolor(3)"></div>
+    <div class="color_dot_show borderColor5" v-if="colordot" @click="choosecolor(4)"></div>
+    <div class="color_dot_show borderColor6" v-if="colordot" @click="choosecolor(5)"></div>
+    <div class="color_dot_show borderColor7" v-if="colordot" @click="choosecolor(6)"></div>
+    <div class="color_dot_show borderColor8" v-if="colordot" @click="choosecolor(7)"></div>
+    <div class="color_dot_show borderColor9" v-if="colordot" @click="choosecolor(8)"></div>
+    <div class="color_dot_show borderColor10" v-if="colordot" @click="choosecolor(9)"></div>
+    <div class="color_dot_show borderColor11" v-if="colordot" @click="choosecolor(10)"></div>
+    <div class="color_dot_show borderColor12" v-if="colordot" @click="choosecolor(11)"></div>
+    <input type="checkbox" name="allDay" class="checkbox" value="yes" v-model="event.allDay" onclick="if(this.c==1){this.c=0;this.checked=0}else this.c=1">
     <input type="text" class="input2" v-model="event.starts">
     <input type="text" class="input3" v-model="event.ends">
     <input type="text" class="input4" v-model="event.timeZone">
@@ -50,8 +59,9 @@
     <div id="colordot" class="color_dot" @click="colorchoose();colordot=!colordot"></div>
   </div>
   <div class="input_box3">
+    <img class="note_img" :src="require('@/assets/note.png')" alt="">
     <p class="p">备忘录：</p>
-    <input type="text" class="input1" v-model="event.note">
+    <input type="text" class="input8" v-model="event.note">
   </div>
 </div>
   
@@ -64,7 +74,16 @@ export default {
   data(){
     return{
       event: {},
-      colordot: false,
+      colordot: false, 
+      color: [
+        '#1EC1C3','#7A8BA9','#D467AE',
+        '#FF7043','#D4E157','#2979FF',
+        '#B8E986','#F8E71C','#EF534F',
+        '#4FC3F7','#7E57C2','#1EC1C3'
+      ],
+      backImg:[
+
+      ]
     }
   },
   
@@ -113,7 +132,7 @@ export default {
         this.event.allDay=1;
       }
       var url='';
-      if(this.event.color==undefined){this.event.color='#1EC1C3';}
+      if(this.event.color==undefined){this.event.color=this.color[0];}
       this.event.color=this.event.color.substr(1,6)
       url="http://localhost:5050/addevent?title="+this.event.title+
       "&place="+this.event.place+
@@ -132,9 +151,9 @@ export default {
       this.$router.push('/Home');
       alert('添加成功');
     },
-    choosecolor(color){
-      this.event.color=color;
-      document.getElementById('colordot').style.borderColor=color;
+    choosecolor(i){
+      this.event.color=this.color[i];
+      document.getElementById('colordot').style.borderColor=this.color[i];
       console.log(this);
     },
     colorchoose(){
@@ -264,10 +283,16 @@ function ajax(url, method, callback) {
   text-align: center;
 }
 .p {
+  opacity: 0.9;
   position: relative;
+  font-size: 15px;
+  line-height: 22px;
+  height: 22px;
   margin:0 auto;
-  padding: 15.2px;
+  padding: 15px;
+  padding-left: 50px;
   text-align: left;
+  color:#8a8a8a;
 }
 .input_box1 {
   position: relative;
@@ -281,47 +306,62 @@ function ajax(url, method, callback) {
   background: #FFFFFF;
   box-shadow: 0 2px 4px 0 rgba(155,170,194,0.09);
 }
+.checkbox {
+  position: absolute;
+  top: 12px;
+  right: 25px;
+  height: 20px;
+  width: 20px;
+  outline: none;
+  
+}
 .input1 {
   position: absolute;
-  top: 2px;
+  top: 6px;
   right: 5px;
   height: 40px;
   width: 150px;
+  border: none;
 }
 .input2 {
   position: absolute;
-  top: 54px;
+  top: 56px;
   right: 5px;
   height: 40px;
   width: 150px;
+  border: none;
 }
 .input3 {
   position: absolute;
-  top: 106px;
+  top: 108px;
   right: 5px;
   height: 40px;
   width: 150px;
+  border: none;
 }
 .input4 {
   position: absolute;
-  top: 158px;
+  top: 160px;
   right: 5px;
   height: 40px;
   width: 150px;
+  border: none;
 }
 .input5 {
   position: absolute;
-  top: 210px;
+  top: 212px;
   right: 5px;
   height: 40px;
   width: 150px;
+  border: none;
 }
 .input6 {
   position: absolute;
-  top: 262px;
+  top: 264px;
   right: 5px;
   height: 40px;
   width: 150px;
+  border: none;
 }
 .input7 {
   position: absolute;
@@ -329,6 +369,16 @@ function ajax(url, method, callback) {
   right: 5px;
   height: 40px;
   width: 150px;
+  border: none;
+}
+.input8 {
+  position: absolute;
+  line-height: 15px;
+  top: 6px;
+  right: 5px;
+  height: 78px;
+  width: 200px;
+  border: none;
 }
 .solid_line {
   position: absolute;
@@ -387,5 +437,75 @@ function ajax(url, method, callback) {
   left: 13px;
   height: 24px;
   width: 26px;
+}
+.note_img {
+  position: absolute;
+  height: 24px;
+  width: 24px;
+  top: 14px;
+  left: 15px;
+}
+.title_img {
+  position: absolute;
+  height: 24px;
+  width: 24px;
+  top: 14px;
+  left: 15px;
+}
+.place_img {
+  position: absolute;
+  height: 26px;
+  width: 26px;
+  top: 64px;
+  left: 15px;
+}
+.allday_img {
+  position: absolute;
+  height: 30px;
+  width: 30px;
+  top: 10px;
+  left: 13px;
+}
+.time_img {
+  position: absolute;
+  height: 26px;
+  width: 26px;
+  top: 65px;
+  left: 14px;
+}
+.time2_img {
+  position: absolute;
+  height: 26px;
+  width: 26px;
+  top: 118px;
+  left: 14px;
+}
+.zone_img {
+  position: absolute;
+  height: 30px;
+  width: 30px;
+  top: 167px;
+  left: 13px;
+}
+.repeat_img {
+  position: absolute;
+  height: 24px;
+  width: 24px;
+  top: 224px;
+  left: 15px;
+}
+.reminder_img {
+  position: absolute;
+  height: 24px;
+  width: 24px;
+  top: 275px;
+  left: 15px;
+}
+.color_img {
+  position: absolute;
+  height: 24px;
+  width: 24px;
+  top: 327px;
+  left: 15px;
 }
 </style>
