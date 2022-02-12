@@ -1,7 +1,7 @@
 <template>
 <div class="AE_body">
   <div class="header">
-    <img :src="require('@/assets/return.png')" class="button_return" alt="返回">
+    <img :src="require('@/assets/return.png')" class="button_return" alt="返回" @click="cancel">
     <p class="header_title">Add Event</p>
     <p class="header_save" @click="addEvent">Save</p>
   </div>
@@ -69,6 +69,9 @@ export default {
   },
   
   methods:{
+    cancel(){
+      this.$router.push('/Home');
+    },
     addEvent(){
       if(this.event.title==undefined){
         alert('标题不可为空');
@@ -253,7 +256,7 @@ function ajax(url, method, callback) {
 .header_save {
   position: absolute;
   margin: 0 auto;
-  top: 50px;
+  top: 52px;
   right: 20px;
   font-size: 16px;
   color: #FFFFFF;

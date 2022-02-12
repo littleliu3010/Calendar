@@ -1,9 +1,11 @@
 <template>
 <div>
-    <div class="event_show" v-for="(data,index) in results" :key="index" :id="index" v-trigger v-on:click="changeClass(index,data.starts,data.ends)">
-        <p v-if="data.display" class="p_title">{{data.title}}</p>
-        <p v-if="data.display" class="p_time">{{data.starts}} - {{data.ends}}</p>
-        <p v-if="data.display" class="p_place">{{data.place}}</p>
+    <div class="event_show" v-for="(data,index) in results" :key="index" :id="index" v-trigger @click="changeClass(index,data.starts,data.ends,data.color),intoEvent(data.id)">
+
+          <p v-if="data.display" class="p_title">{{data.title}}</p>
+          <p v-if="data.display" class="p_time">{{data.starts}} - {{data.ends}}</p>
+          <p v-if="data.display" class="p_place">{{data.place}}</p>
+
     </div>
 </div>
 </template>
@@ -14,9 +16,11 @@ export default {
   data(){
     return{
       results:{},
+      count:[],
       changeClass:changeClass,
     }
   },
+  //trigger自动触发
   directives: {
     trigger: {
       inserted(el, binding) {
@@ -25,15 +29,26 @@ export default {
       }
     }
   },
+  methods: {
+    intoEvent(id){
+      if(this.count[id]==1){
+        this.$router.push('/intoevent?id='+id);
+      }
+      else{
+        this.count[id]=1;
+      }
+    }
+  },
   created(){
     //接收数据
     this.$http.get("http://localhost:5050/event").then((res)=>{
-      this.results=res.data
+      this.results=res.data;
       console.log(this.results);
     });
   }
 }
-function changeClass(i,starts,ends){
+
+function changeClass(i,starts,ends,color){
   var time=ends-starts,clock=0;
   for(;;time<1)
     if(time>=1){
@@ -45,17 +60,18 @@ function changeClass(i,starts,ends){
   var height=clock*45+time*75+"px",top=starts*47+23+"px";
   document.getElementById(i).style.height=height;
   document.getElementById(i).style.top=top;
+  document.getElementById(i).style.backgroundColor="#"+color;
 }
-console.log(this.id)
 </script>
 
 <style>
+
 .event_show {
   position: absolute;
   width: 300px;
   right:20px;
   background: yellow;
-  border: 2px solid rgb(156, 66, 66);
+  border: 2px solid rgb(0, 0, 0);
   border-radius: 4px;
 }
 .p_title {

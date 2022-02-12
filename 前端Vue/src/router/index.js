@@ -4,6 +4,8 @@ import Router from 'vue-router'
 import Home from '@/components/Home'
 // import MainCalendar1 from '@/components/MainCalendar1'
 import AddEvent from '@/components/AddEvent'
+import IntoEvent from '@/components/IntoEvent'
+
 
 Vue.use(Router)
 
@@ -22,6 +24,11 @@ export default new Router({
       path: '/addevent',
       name: 'AddEvent',
       component: AddEvent 
+    },
+    {
+      path: '/intoevent',
+      name: 'IntoEvent',
+      component: IntoEvent 
     },
   ]
 })

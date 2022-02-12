@@ -39,6 +39,31 @@ app.get("/event",function(req,res){
   });
 });
 
+//查询/intoevent
+app.get('/intoevent',function(req,res){
+  db.query(`SELECT * FROM addevent WHERE id=${req.query.id}`,function(err,data){
+    if(err){
+      console.log(err);
+    }
+    else{
+      res.header("Access-Control-Allow-Origin", "*");
+      console.log(data);
+      res.send(data);
+    }
+  });
+});
+
+//修改/modifyevent
+app.get('/modifyevent',function(req,res){
+  db.query(`UPDATE addevent SET title='${req.query.title}',starts='${req.query.starts}',ends='${req.query.ends}',place='${req.query.place}',re_peat='${req.query.re_peat}',reminder='${req.query.reminder}' WHERE id=${req.query.id}`,function(err,data){
+    if(err){
+      console.log(err);
+    }
+    else{
+      res.header("Access-Control-Allow-Origin", "*");
+    }
+  });
+});
 
 //跨域
 app.use(cors({
