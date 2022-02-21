@@ -1,9 +1,9 @@
 <template>
-  <div class="background-color">
+  <!-- <div class="background-color"> -->
     <div class="body">
       <router-view/>
     </div>
-  </div>
+  <!-- </div> -->
 </template>
 
 <script>

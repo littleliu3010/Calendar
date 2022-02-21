@@ -1,5 +1,5 @@
 <template>
-  <div class="event scrollbar">
+  <div class="event scrollbar2">
     <!-- event背景框架 -->
     <div class="event_div">
       <div v-for="time in event_time" :key="time">
@@ -59,22 +59,23 @@ export default {
 }
 .event {
   position: absolute;
-  overflow: auto;
+  overflow-x: hidden;
+  overflow-y: auto;
   margin-top: 160px;
   height: 652px;
 }
-.scrollbar::-webkit-scrollbar {
+.scrollbar2::-webkit-scrollbar {
 /*滚动条整体样式*/
 height : 0px;
 width: 0px;  /*高宽分别对应横竖滚动条的尺寸*/
 }
-.scrollbar::-webkit-scrollbar-thumb {
+.scrollbar2::-webkit-scrollbar-thumb {
 /*滚动条里面小方块*/
 border-radius: 10px;
 box-shadow   : inset 0 0 5px rgba(0, 0, 0, 0.2);
 background   : #464FE5;
 }
-.scrollbar::-webkit-scrollbar-track {
+.scrollbar2::-webkit-scrollbar-track {
 /*滚动条里面轨道*/
 border-radius: 10px;
 }
