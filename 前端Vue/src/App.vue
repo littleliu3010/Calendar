@@ -15,6 +15,7 @@ export default {
 <style>
 body {
   margin: 0 auto;
+  font-family: Helvetica;
 }
 .body {
   position: relative;
@@ -22,6 +23,7 @@ body {
   background: #fff;
   height: 812px;
   width: 375px;
+  overflow: hidden;
 }
 .background-color {
   padding-top:35px;

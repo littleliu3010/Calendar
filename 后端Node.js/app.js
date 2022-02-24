@@ -16,7 +16,7 @@ var db=mysql.createConnection({
 //添加/addEvent
 app.get("/addevent",function(req,res){
   console.log(req.query)
-  db.query(`INSERT INTO addevent (id, title, place, allDay, starts, ends, timeZone, re_peat, reminder, color, note, display) VALUES (NULL, '${req.query.title}', '${req.query.place}', '${req.query.allDay}', '${req.query.starts}', '${req.query.ends}', '${req.query.timeZone}', '${req.query.re_peat}', '${req.query.reminder}', '${req.query.color}', '${req.query.note}', '${req.query.display}')`,function(err,data){
+  db.query(`INSERT INTO addevent (id, title, place, allDay, starts, ends, timeZone, re_peat, reminder, color, color2, deg, percent, percent2, note, display) VALUES (NULL, '${req.query.title}', '${req.query.place}', '${req.query.allDay}', '${req.query.starts}', '${req.query.ends}', '${req.query.timeZone}', '${req.query.re_peat}', '${req.query.reminder}', '${req.query.color}', '${req.query.color2}', '${req.query.deg}', '${req.query.percent}', '${req.query.percent2}', '${req.query.note}', '${req.query.display}')`,function(err,data){
     if(err){
       console.log(err);
     }

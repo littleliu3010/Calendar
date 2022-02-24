@@ -39,19 +39,20 @@ export default {
   position: absolute;
   margin:0;
   opacity: 1;
-  top: -10px;
+  top: 40px;
   left: -42px;
 }
 .event_block {
   position: relative;
   left: 50px;
-  top: 23px;
+  top: -23px;
   height: 45px;
   width: 373px;
 }
 .event_line { 
   opacity: 0.5;
-  border: 1px solid #E8EAEF;
+  border: 2px solid #E8EAEF;
+  border-color: transparent transparent #E8EAEF #E8EAEF;
 }
 .event_div {
   margin: 0;

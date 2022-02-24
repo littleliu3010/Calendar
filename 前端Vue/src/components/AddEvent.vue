@@ -15,14 +15,14 @@
     <input type="text" class="input2" v-model="event.place">
   </div>
   
-  <div id="inputBox2" class="input_box2">
+  <div id="more-Color" class="input_box2">
     <div class="solid_line"></div>
     <div class="solid_line solid_line2"></div>
     <div class="solid_line solid_line3"></div>
     <div class="solid_line solid_line4"></div>
     <div class="solid_line solid_line5"></div>
     <div class="solid_line solid_line6"></div>
-    <div class="solid_line solid_line7" v-if="colordot"></div>
+    <div class="solid_line solid_line7" ></div>
     <img class="allday_img" :src="require('@/assets/allday.png')" alt="">
     <p class="p">每天：</p>
     <img class="time_img" :src="require('@/assets/time.png')" alt="">
@@ -37,18 +37,21 @@
     <p class="p">Reminder：</p>
     <img class="color_img" :src="require('@/assets/color.png')" alt="">
     <p class="p">颜色：</p>
-    <div class="color_dot_show borderColor1" v-if="colordot" @click="choosecolor(0)"></div>
-    <div class="color_dot_show borderColor2" v-if="colordot" @click="choosecolor(1)"></div>
-    <div class="color_dot_show borderColor3" v-if="colordot" @click="choosecolor(2)"></div>
-    <div class="color_dot_show borderColor4" v-if="colordot" @click="choosecolor(3)"></div>
-    <div class="color_dot_show borderColor5" v-if="colordot" @click="choosecolor(4)"></div>
-    <div class="color_dot_show borderColor6" v-if="colordot" @click="choosecolor(5)"></div>
-    <div class="color_dot_show borderColor7" v-if="colordot" @click="choosecolor(6)"></div>
-    <div class="color_dot_show borderColor8" v-if="colordot" @click="choosecolor(7)"></div>
-    <div class="color_dot_show borderColor9" v-if="colordot" @click="choosecolor(8)"></div>
-    <div class="color_dot_show borderColor10" v-if="colordot" @click="choosecolor(9)"></div>
-    <div class="color_dot_show borderColor11" v-if="colordot" @click="choosecolor(10)"></div>
-    <div class="color_dot_show borderColor12" v-if="colordot" @click="choosecolor(11)"></div>
+    <div >
+      <div class="color_dot_show borderColor1" @click="choosecolor(0)"></div>
+      <div class="color_dot_show borderColor2" @click="choosecolor(1)"></div>
+      <div class="color_dot_show borderColor3" @click="choosecolor(2)"></div>
+      <div class="color_dot_show borderColor4" @click="choosecolor(3)"></div>
+      <div class="color_dot_show borderColor5" @click="choosecolor(4)"></div>
+      <div class="color_dot_show borderColor6" @click="choosecolor(5)"></div>
+      <div class="color_dot_show borderColor7" @click="choosecolor(6)"></div>
+      <div class="color_dot_show borderColor8" @click="choosecolor(7)"></div>
+      <div class="color_dot_show borderColor9" @click="choosecolor(8)"></div>
+      <div class="color_dot_show borderColor10" @click="choosecolor(9)"></div>
+      <div class="color_dot_show borderColor11" @click="choosecolor(10)"></div>
+      <div class="color_dot_show borderColor12" @click="choosecolor(11)"></div>
+    </div>
+    
     <input type="checkbox" name="allDay" class="checkbox" value="yes" v-model="event.allDay" onclick="if(this.c==1){this.c=0;this.checked=0}else this.c=1">
     <input type="text" class="input2" v-model="event.starts">
     <input type="text" class="input3" v-model="event.ends">
@@ -56,7 +59,7 @@
     <input type="text" class="input5" v-model="event.repeat">
     <input type="text" class="input6" v-model="event.reminder">
     <!-- <input type="text" class="input7" v-model="event.color"> -->
-    <div id="colordot" class="color_dot" @click="colorchoose();colordot=!colordot"></div>
+    <div id="color-dot" class="color_dot" @click="moreColor()"></div>
   </div>
   <div class="input_box3">
     <img class="note_img" :src="require('@/assets/note.png')" alt="">
@@ -74,13 +77,30 @@ export default {
   data(){
     return{
       event: {},
-      colordot: false, 
+      /* background-image: linear-gradient(60deg, #99E5A2 0%, #D4FC78 100%); */
+      /* background-image: linear-gradient(60deg, #6CACFF 0%, #8DEBFF 100%); */
+      /* background-image: linear-gradient(60deg, #5583EE 0%, #41D8DD 100%); */
+      /* background-image: linear-gradient(60deg, #A16BFE 0%, #DEB0DF 100%); */
+      /* background-image: linear-gradient(60deg, #D279EE 0%, #F8C390 100%); */
+      /* background-image: linear-gradient(60deg, #F78FAD 0%, #FDEB82 100%); */
+      /* background-image: linear-gradient(60deg, #9D2E7D 0%, #E16E93 100%); */
+      /* background-image: linear-gradient(60deg, #F5CCF6 0%, #F1EEF9 100%); */
+      /* background-image: linear-gradient(60deg, #121317 0%, #323B42 100%); */
       color: [
-        '#1EC1C3','#7A8BA9','#D467AE',
-        '#FF7043','#D4E157','#2979FF',
-        '#B8E986','#F8E71C','#EF534F',
-        '#4FC3F7','#7E57C2','#1EC1C3'
+        '6B73FF','E680DA','02A0BA',
+        'D46879','99E5A2','6CACFF',
+        '5583EE','A16BFE','D279EE',
+        'F78FAD','9D2E7D','121317'
       ],
+      color2: [
+        '3E47E7','D365AA','1FC2C3',
+        'D46879','D4FC78','8DEBFF',
+        '41D8DD','DEB0DF','F8C390',
+        'FDEB82','E16E93','323B42'
+      ],
+      deg: 60,
+      percent: 0,
+      percent2: 100,
       backImg:[
 
       ]
@@ -88,6 +108,15 @@ export default {
   },
   
   methods:{
+    moreColor(){
+      if(document.getElementById('more-Color').style.animationName == 'moreColor-move-in'){
+        document.getElementById('more-Color').style.animationName = 'moreColor-move-out'
+      }
+      else {
+        document.getElementById('more-Color').style.animationName = 'moreColor-move-in'
+      }
+      
+    },
     cancel(){
       this.$router.push('/Home');
     },
@@ -133,7 +162,6 @@ export default {
       }
       var url='';
       if(this.event.color==undefined){this.event.color=this.color[0];}
-      this.event.color=this.event.color.substr(1,6)
       url="http://localhost:5050/addevent?title="+this.event.title+
       "&place="+this.event.place+
       "&allDay="+this.event.allDay+
@@ -143,6 +171,10 @@ export default {
       "&re_peat="+this.event.repeat+
       "&reminder="+this.event.reminder+
       "&color="+this.event.color+
+      "&color2="+this.event.color2+
+      "&deg="+this.event.deg+
+      "&percent="+this.event.percent+
+      "&percent2="+this.event.percent2+
       "&note="+this.event.note+
       "&display=1";
       console.log(this.event.color);
@@ -153,16 +185,11 @@ export default {
     },
     choosecolor(i){
       this.event.color=this.color[i];
-      document.getElementById('colordot').style.borderColor=this.color[i];
-      console.log(this);
-    },
-    colorchoose(){
-      if(document.getElementById('inputBox2').style.height=='450px'){
-        document.getElementById('inputBox2').style.height='362px';
-      }
-      else{
-        document.getElementById('inputBox2').style.height='450px';
-      }
+      this.event.color2=this.color2[i];
+      this.event.deg=this.deg;
+      this.event.percent=this.percent;
+      this.event.percent2=this.percent2;
+      document.getElementById('color-dot').style.borderColor="#"+this.color[i];
     },
   },
   components:{
@@ -192,6 +219,7 @@ function ajax(url, method, callback) {
 
 <style>
 .color_dot_show {
+  cursor: pointer;
   display: inline-block;
   margin-top: 14px;
   margin-left: 11px;
@@ -202,40 +230,40 @@ function ajax(url, method, callback) {
   border-radius: 12px;
 }
 .borderColor1 {
-  border:12px solid #1EC1C3;
+  border:12px solid #6B73FF;
 }
 .borderColor2 {
-  border:12px solid #7A8BA9;
+  border:12px solid #E680DA;
 }
 .borderColor3 {
-  border:12px solid #D467AE;
+  border:12px solid #02A0BA;
 }
 .borderColor4 {
-  border:12px solid #FF7043;
+  border:12px solid #D46879;
 }
 .borderColor5 {
-  border:12px solid #D4E157;
+  border:12px solid #99E5A2;
 }
 .borderColor6 {
-  border:12px solid #2979FF;
+  border:12px solid #6CACFF;
 }
 .borderColor7 {
-  border:12px solid #B8E986;
+  border:12px solid #5583EE;
 }
 .borderColor8 {
-  border:12px solid #F8E71C;
+  border:12px solid #A16BFE;
 }
 .borderColor9 {
-  border:12px solid #EF534F;
+  border:12px solid #D279EE;
 }
 .borderColor10 {
-  border:12px solid #4FC3F7;
+  border:12px solid #F78FAD;
 }
 .borderColor11 {
-  border:12px solid #7E57C2;
+  border:12px solid #9D2E7D;
 }
 .borderColor12 {
-  border:12px solid #1EC1C3;
+  border:12px solid #121317;
 }
 .color_choose {
   margin: 0 auto;
@@ -243,13 +271,14 @@ function ajax(url, method, callback) {
   width: 327px;
 }
 .color_dot {
+  cursor: pointer;
   margin: 0 auto;
   position: absolute;
   top: 325px;
   right: 20px;
   height: 0;
   width: 0;
-  border:12px solid #1EC1C3;
+  border:12px solid #6B73FF;
   border-radius: 12px;
 }
 .AE_body {
@@ -273,6 +302,7 @@ function ajax(url, method, callback) {
   text-align: center;
 }
 .header_save {
+  cursor: pointer;
   position: absolute;
   margin: 0 auto;
   top: 52px;
@@ -432,6 +462,7 @@ function ajax(url, method, callback) {
   box-shadow: 0 2px 4px 0 rgba(155,170,194,0.09);
 }
 .button_return {
+  cursor: pointer;
   position: absolute;
   top: 52px;
   left: 13px;
@@ -507,5 +538,21 @@ function ajax(url, method, callback) {
   width: 24px;
   top: 327px;
   left: 15px;
+}
+#more-Color {
+  overflow: hidden;
+  animation-fill-mode:both;
+  animation-name: moreColor-stop;
+  animation-duration: 0.6s;
+}
+@keyframes moreColor-stop {
+}
+@keyframes moreColor-move-in {
+  from {height: 362px;}
+  to {height: 450px;}
+}
+@keyframes moreColor-move-out {
+  from {height: 450px;}
+  to {height: 362px;}
 }
 </style>

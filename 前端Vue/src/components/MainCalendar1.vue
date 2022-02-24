@@ -1,5 +1,6 @@
 <template>
   <div class="mainCalendar1 scrollbar">
+    <img :src="require('@/assets/back-mountain.png')" class="header-backImg">
     <div class="littleCalendar">
       <div v-for="(day,index) in this_month" :key="index" class="div">
           <div v-if="day.day==1" class="day day1">
@@ -36,16 +37,26 @@ export default {
 </script>
 
 <style>
+.header-backImg{
+  position: absolute;
+  height: 160px;
+  opacity: 0.1;
+  /* 图片居中 */
+  left: 50%;
+  bottom: -4px;
+  margin-left: -380px;
+}
 .mainCalendar1 {
   position: relative;
-  background-image: linear-gradient(-44deg, #4A53EF 0%, #6971FE 100%);
+  background-image: linear-gradient(60deg, #4A53EF 0%, #6971FE 100%);
   box-shadow: -2px 31px 51px 0 rgba(47,47,77,0.16);
   height: 160px;
   width: 375px;
   overflow: auto;
 }
 .littleCalendar {
-  position: absolute;
+  position: relative;
+  margin-top: 84px;
   bottom: 0;
   height: 76px;
   width: 1550px;
@@ -80,6 +91,7 @@ export default {
   color: #fff;
   opacity: 0.4;
   font-size: 10px;
+  line-height: 18px;
   margin: 0 auto;
   text-align: center;
 }
@@ -87,6 +99,7 @@ export default {
   color: #fff;
   opacity: 0.4;
   font-size: 18px;
+  line-height: 19px;
   margin: 0 auto;
   text-align: center;
 }

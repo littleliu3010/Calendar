@@ -1,6 +1,6 @@
 <template>
 <div>
-    <div class="event_show" v-for="(data,index) in results" :key="index" :id="index" v-trigger @click="changeClass(index,data.starts,data.ends,data.color),intoEvent(data.id)">
+    <div class="event_show" v-for="(data,index) in results" :key="index" :id="index" v-trigger @click="changeClass(index,data.starts,data.ends,data.color,data.color2,data.deg,data.percent,data.percent2),intoEvent(data.id)">
 
           <p v-if="data.display" class="p_title">{{data.title}}</p>
           <p v-if="data.display" class="p_time">{{data.starts}} - {{data.ends}}</p>
@@ -24,7 +24,6 @@ export default {
   directives: {
     trigger: {
       inserted(el, binding) {
-        console.log('el>>', el)
         el.click()
       }
     }
@@ -43,12 +42,11 @@ export default {
     //接收数据
     this.$http.get("http://localhost:5050/event").then((res)=>{
       this.results=res.data;
-      console.log(this.results);
     });
   }
 }
 
-function changeClass(i,starts,ends,color){
+function changeClass(i,starts,ends,color,color2,deg,percent,percent2){
   var time=ends-starts,clock=0;
   for(;;time<1)
     if(time>=1){
@@ -57,20 +55,21 @@ function changeClass(i,starts,ends,color){
     else{
       break;
     }
-  var height=clock*45+time*75+"px",top=starts*47+23+"px";
+  var height=clock*49+time*75+"px",top=starts*49+26+"px";
   document.getElementById(i).style.height=height;
   document.getElementById(i).style.top=top;
-  document.getElementById(i).style.background="#"+color;
-  document.getElementById(i).style.border='2px solid #'+color;
+  document.getElementById(i).style.backgroundImage="linear-gradient("+deg+"deg, #"+color+" "+percent+"%, #"+color2+" "+percent2+"%)";
 }
+
 </script>
 
 <style>
 
 .event_show {
+  cursor: pointer;
   position: absolute;
-  width: 300px;
-  right:20px;
+  width: 315px;
+  right:10px;
   background: yellow;
   border-radius: 4px;
 }

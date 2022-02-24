@@ -1,5 +1,6 @@
 <template>
 <div class="mainCalendar2">
+  <img :src="require('@/assets/back-mountain.png')" class="header-backImg">
   <ul>
     <li v-for="(day,index) in week" :key="index" class="opacity li"><p class="day2 week_margin">{{day}}</p></li>
   </ul>
@@ -72,7 +73,7 @@ ul {
   text-align: center;
   height: 19px;
   width: 20px;
-  line-height: 19px;
+  line-height: 20px;
   font-size: 16px;
   color: #fff;
 }
@@ -85,7 +86,7 @@ ul {
   text-align: center;
   height: 19px;
   width: 20px;
-  line-height: 19px;
+  line-height: 20px;
   font-size: 16px;
   border:2px solid #fff;
   border-radius: 4px;
@@ -109,9 +110,18 @@ ul {
 }
 .mainCalendar2 {
   position: relative;
-  background-image: linear-gradient(-44deg, #4A53EF 0%, #6971FE 100%);
+  background-image: linear-gradient(60deg, #4A53EF 0%, #6971FE 100%);
   box-shadow: -2px 31px 51px 0 rgba(47,47,77,0.16);
   height: 373px;
   width: 375px;
+}
+.header-backImg{
+  position: absolute;
+  height: 160px;
+  opacity: 0.1;
+  /* 图片居中 */
+  left: 50%;
+  bottom: -4px;
+  margin-left: -380px;
 }
 </style>

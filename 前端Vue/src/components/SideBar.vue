@@ -1,6 +1,6 @@
 <template>
-  <div class="menu" v-if="sidebar_show">
-     <div class="menu_right" @click="sidebar_show=!sidebar_show;toHome()"></div>
+  <div id="sidebar" class="menu" v-if="sidebar_show">
+     <div class="menu_right" @click="sideBarOut();toHome()"></div>
      <div class="menu_title"><p class="little_liu">小刘日历</p></div>
   </div>
 </template>
@@ -16,8 +16,14 @@ export default {
   },
   methods:{
     toHome(){
+      setTimeout(() => {
+      this.sidebar_show=false;
       this.$emit('receive',this.sidebar_show);
-    }
+      }, 600);
+    },
+    sideBarOut () {
+      document.getElementById('sidebar').style.animationName = 'move-out'
+    },
   }
 }
 
@@ -36,7 +42,7 @@ export default {
   top:0px;
   left:275px;
   height:812px;
-  width:100px;
+  width:375px;
   opacity: 0.5;
   background: #2F2F4D;
 }
