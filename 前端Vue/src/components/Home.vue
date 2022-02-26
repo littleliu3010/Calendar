@@ -17,6 +17,15 @@
 </template>
 
 <script>
+/* background-image: linear-gradient(60deg, #99E5A2 0%, #D4FC78 100%); */
+/* background-image: linear-gradient(60deg, #6CACFF 0%, #8DEBFF 100%); */
+/* background-image: linear-gradient(60deg, #5583EE 0%, #41D8DD 100%); */
+/* background-image: linear-gradient(60deg, #A16BFE 0%, #DEB0DF 100%); */
+/* background-image: linear-gradient(60deg, #D279EE 0%, #F8C390 100%); */
+/* background-image: linear-gradient(60deg, #F78FAD 0%, #FDEB82 100%); */
+/* background-image: linear-gradient(60deg, #9D2E7D 0%, #E16E93 100%); */
+/* background-image: linear-gradient(60deg, #F5CCF6 0%, #F1EEF9 100%); */
+/* background-image: linear-gradient(60deg, #121317 0%, #323B42 100%); */
 import SideBar from './SideBar.vue';
 import MainCalendar1 from './MainCalendar1.vue'
 import MainCalendar2 from './MainCalendar2.vue'

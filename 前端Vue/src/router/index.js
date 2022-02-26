@@ -18,16 +18,19 @@ export default new Router({
     {
       path: '/home',
       name: 'Home',
+      meta: {index: 0},
       component: Home 
     },
     {
       path: '/addevent',
       name: 'AddEvent',
+      meta: {index: 1},
       component: AddEvent 
     },
     {
       path: '/intoevent',
       name: 'IntoEvent',
+      meta: {index: 1},
       component: IntoEvent 
     },
   ]

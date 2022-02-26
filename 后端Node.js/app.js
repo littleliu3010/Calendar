@@ -55,7 +55,19 @@ app.get('/intoevent',function(req,res){
 
 //修改/modifyevent
 app.get('/modifyevent',function(req,res){
-  db.query(`UPDATE addevent SET title='${req.query.title}',starts='${req.query.starts}',ends='${req.query.ends}',place='${req.query.place}',re_peat='${req.query.re_peat}',reminder='${req.query.reminder}' WHERE id=${req.query.id}`,function(err,data){
+  db.query(`UPDATE addevent SET title='${req.query.title}',starts='${req.query.starts}',ends='${req.query.ends}',place='${req.query.place}',re_peat='${req.query.re_peat}',reminder='${req.query.reminder}',note='${req.query.note}' WHERE id=${req.query.id}`,function(err,data){
+    if(err){
+      console.log(err);
+    }
+    else{
+      res.header("Access-Control-Allow-Origin", "*");
+    }
+  });
+});
+
+//删除deteleevent
+app.get('/deteleevent',function(req,res){
+  db.query(`DELETE FROM addevent WHERE id="${req.query.id}";`,function(err,data){
     if(err){
       console.log(err);
     }

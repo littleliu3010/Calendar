@@ -1,7 +1,7 @@
 <template>
 <div>
     <div class="event_show" v-for="(data,index) in results" :key="index" :id="index" v-trigger @click="changeClass(index,data.starts,data.ends,data.color,data.color2,data.deg,data.percent,data.percent2),intoEvent(data.id)">
-
+          
           <p v-if="data.display" class="p_title">{{data.title}}</p>
           <p v-if="data.display" class="p_time">{{data.starts}} - {{data.ends}}</p>
           <p v-if="data.display" class="p_place">{{data.place}}</p>

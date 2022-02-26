@@ -1,8 +1,9 @@
 <template>
-  <div class="mainCalendar1 scrollbar">
+  <div class="mainCalendar1">
     <img :src="require('@/assets/back-mountain.png')" class="header-backImg">
-    <div class="littleCalendar">
-      <div v-for="(day,index) in this_month" :key="index" class="div">
+    <div style="overflow: auto" class="scrollbar">
+      <div class="littleCalendar">
+        <div v-for="(day,index) in this_month" :key="index" class="div">
           <div v-if="day.day==1" class="day day1">
             <p class="p_date">{{day.date}}</p>
             <p class="p_day">{{day.day}}</p>
@@ -16,6 +17,7 @@
             <p class="p_day">{{day.day}}</p>
           </div>
       </div>
+  </div>
   </div>
 </div>
 </template>
@@ -52,9 +54,9 @@ export default {
   box-shadow: -2px 31px 51px 0 rgba(47,47,77,0.16);
   height: 160px;
   width: 375px;
-  overflow: auto;
 }
 .littleCalendar {
+  overflow: auto;
   position: relative;
   margin-top: 84px;
   bottom: 0;

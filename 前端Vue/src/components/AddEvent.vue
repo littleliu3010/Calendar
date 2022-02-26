@@ -1,9 +1,10 @@
 <template>
 <div class="AE_body">
   <div class="header">
+    <img :src="require('@/assets/back-mountain.png')" class="header-backImg2">
     <img :src="require('@/assets/return.png')" class="button_return" alt="返回" @click="cancel">
     <p class="header_title">Add Event</p>
-    <p class="header_save" @click="addEvent">Save</p>
+    <p class="header_save" @click="addEvent">保存</p>
   </div>
   <div class="input_box1">
     <div class="solid_line"></div>
@@ -58,13 +59,12 @@
     <input type="text" class="input4" v-model="event.timeZone">
     <input type="text" class="input5" v-model="event.repeat">
     <input type="text" class="input6" v-model="event.reminder">
-    <!-- <input type="text" class="input7" v-model="event.color"> -->
     <div id="color-dot" class="color_dot" @click="moreColor()"></div>
   </div>
   <div class="input_box3">
     <img class="note_img" :src="require('@/assets/note.png')" alt="">
     <p class="p">备忘录：</p>
-    <input type="text" class="input8" v-model="event.note">
+    <textarea name="" id="" cols="" rows="" class="input8" v-model="event.note"></textarea>
   </div>
 </div>
   
@@ -77,15 +77,6 @@ export default {
   data(){
     return{
       event: {},
-      /* background-image: linear-gradient(60deg, #99E5A2 0%, #D4FC78 100%); */
-      /* background-image: linear-gradient(60deg, #6CACFF 0%, #8DEBFF 100%); */
-      /* background-image: linear-gradient(60deg, #5583EE 0%, #41D8DD 100%); */
-      /* background-image: linear-gradient(60deg, #A16BFE 0%, #DEB0DF 100%); */
-      /* background-image: linear-gradient(60deg, #D279EE 0%, #F8C390 100%); */
-      /* background-image: linear-gradient(60deg, #F78FAD 0%, #FDEB82 100%); */
-      /* background-image: linear-gradient(60deg, #9D2E7D 0%, #E16E93 100%); */
-      /* background-image: linear-gradient(60deg, #F5CCF6 0%, #F1EEF9 100%); */
-      /* background-image: linear-gradient(60deg, #121317 0%, #323B42 100%); */
       color: [
         '6B73FF','E680DA','02A0BA',
         'D46879','99E5A2','6CACFF',
@@ -116,7 +107,7 @@ export default {
         document.getElementById('more-Color').style.animationName = 'moreColor-move-in'
       }
       
-    },
+    }, 
     cancel(){
       this.$router.push('/Home');
     },
@@ -352,6 +343,7 @@ function ajax(url, method, callback) {
   height: 40px;
   width: 150px;
   border: none;
+  outline-color: #6B73FF;
 }
 .input2 {
   position: absolute;
@@ -360,6 +352,7 @@ function ajax(url, method, callback) {
   height: 40px;
   width: 150px;
   border: none;
+  outline-color: #6B73FF;
 }
 .input3 {
   position: absolute;
@@ -368,6 +361,7 @@ function ajax(url, method, callback) {
   height: 40px;
   width: 150px;
   border: none;
+  outline-color: #6B73FF;
 }
 .input4 {
   position: absolute;
@@ -376,6 +370,7 @@ function ajax(url, method, callback) {
   height: 40px;
   width: 150px;
   border: none;
+  outline-color: #6B73FF;
 }
 .input5 {
   position: absolute;
@@ -384,6 +379,7 @@ function ajax(url, method, callback) {
   height: 40px;
   width: 150px;
   border: none;
+  outline-color: #6B73FF;
 }
 .input6 {
   position: absolute;
@@ -392,14 +388,7 @@ function ajax(url, method, callback) {
   height: 40px;
   width: 150px;
   border: none;
-}
-.input7 {
-  position: absolute;
-  top: 314px;
-  right: 5px;
-  height: 40px;
-  width: 150px;
-  border: none;
+  outline-color: #6B73FF;
 }
 .input8 {
   position: absolute;
@@ -409,6 +398,11 @@ function ajax(url, method, callback) {
   height: 78px;
   width: 200px;
   border: none;
+  font-family: Helvetica;
+  vertical-align:top;
+  resize:none;
+  outline-color: #6B73FF;
+  word-break:break-all;
 }
 .solid_line {
   position: absolute;
@@ -554,5 +548,15 @@ function ajax(url, method, callback) {
 @keyframes moreColor-move-out {
   from {height: 450px;}
   to {height: 362px;}
+}
+
+.header-backImg2{
+  position: absolute;
+  height: 90px;
+  opacity: 0.1;
+  left: 50%;
+  /* 图片居中 */
+  bottom: -4px;
+  margin-left: -200px;
 }
 </style>
